@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+
+</body>
+<script src="../m/assets/zepto/zepto.min.js"></script>
+<script>
+$(function(){
+
+});
+// 获取本地存储数据
+var getLocalStorageData = function(){
+  /*
+   判断web存储中的数据是否存在，不存在输出一个字符串数组。
+   更简单的办法是和空字符串进行  与比较     (locaoStorage.getItem('history') || '[]');
+   */
+  return JSON.parse(localStorage.getItem('history')?localStorage.getItem('history'):'[]');
+}
+/*
+添加本地存储：
+  拿数据，与需要存储的数据进行比较。如果有的话删除原本位置的数据，并将该数据提前。
+  同时判断此次数据是否超过10个，如果超过十个进行裁剪。
+  将所有数据转换成字符串然后存储到web当中。
+ */
+
+var setLocalStorageData = function(data){
+  // 1.拿数据
+  var list = getLocalStorageData();
+  /*
+    2.将插入数据与该数据进行比较
+      如果存储中有该数据，删除原本位置上的数据
+      将插入的数据放入到存储数据中
+   */
+  $.each(list,function(i,item){
+    if(data == item){
+      list.splice(i,1);
+    }
+  })
+  list.unshift(data);
+
+  /*
+    3.当数据超过10个，删除原本最开始数据
+   */
+  if(list.length>10){
+    list.splice(10,1);
+  }
+  /*
+    4.将数据转换成字符串放入到web储存当中
+   */
+  localStorage.setItem('history',JSON.stringify(list));
+}
+</script>
+
+</html>

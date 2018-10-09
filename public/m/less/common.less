@@ -1,0 +1,29 @@
+.f_left{
+  float: left;
+}
+.f_right{
+  float: right;
+}
+.clearFix::after,.clearFix::before{
+  display: block;
+  content: '';
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+body{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+}
+.lt_container{
+  position: relative;
+  height: 100%;
+  width: 100%;
+  max-width: 750px;
+  min-width: 320px;
+  margin: 0 auto;
+}
