@@ -146,11 +146,16 @@ body {
   padding: 0 10px;
   height: 36px;
   line-height: 18px;
+  overflow: hidden;
 }
 .lt_content .lt_products a p .price {
   color: #f30;
   font-size: 12px;
   margin-right: 10px;
+}
+.lt_content .lt_products a p .oldPrice {
+  font-size: 12px;
+  text-decoration: line-through;
 }
 .lt_content .lt_products a .button {
   background: #006699;
