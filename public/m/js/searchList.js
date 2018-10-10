@@ -10,6 +10,7 @@ $(function(){
   var params = obj.getParamsByUrl();
   $('.lt_search input').val(params.key);
   // 3.初始化页面，根据input的值渲染商品页
+  window.pageNum = 1;
   getSearchData({
     page:1,
     pageSize:4
@@ -50,6 +51,7 @@ $(function(){
   /*
   下拉刷新和上拉加载
    */
+   var come = 'hello';
    mui.init({
      pullRefresh : {
        container:"#refreshContainer",//下拉刷新容器标识，querySelector能定位的css选择器均可，比如：id、.class等
@@ -57,9 +59,11 @@ $(function(){
          callback :function(){
            var that = this;
            setTimeout(function(){
+             //清除排序样式
+             $('.lt_productList').find('div').removeClass('now').find('span').removeClass('fa-angle-up').addClass('fa-angle-down');
              getSearchData({
-             page:1,
-             pageSize:4
+               page:1,
+               pageSize:4
              },function(data){
                $('.lt_products').html(template('proTemplate',data));
              });
@@ -67,6 +71,32 @@ $(function(){
              that.endPulldownToRefresh();
              that.refresh(true);
            },1000)
+         }
+       },
+       up : {
+         contentnomore:'没有更多数据了',
+         callback :function(){
+           var that = this;
+           setTimeout(function(){
+             // 在原页面（包括排序后的页面）重新获取数据，并附加在页面之后
+             if($('.lt_productList').find('div').hasClass('now')){
+
+             }else{
+               window.pageNum++;
+               getSearchData({
+                 page:window.pageNum,
+                 pageSize:4
+               },function(data){
+                 if(!data.data.length){
+                   that.endPullupToRefresh(true);
+                 }else{
+                   $('.lt_products').append(template('proTemplate',data));
+                   that.endPullupToRefresh(false);
+                 }
+               })
+
+             }
+           },1000);
          }
        }
      }
