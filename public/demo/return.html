@@ -14,12 +14,8 @@
   </style>
 </head>
 <body>
-<ul>
-  <li>hello</li>
-  <li>hello</li>
-  <li>hello</li>
-  <li>hello</li>
-</ul>
+<div>show</div>
+<a href="www.baidu.com">baidu</a>
 </body>
 <script src="../m/assets/zepto/zepto.min.js"></script>
 <script>
@@ -28,6 +24,10 @@ $(function(){
     console.log('hello');
     return;
     console.log('world');
+  })
+  $('a').on('click',function(){
+    console.log('a');
+    return false;
   })
 })
 </script>

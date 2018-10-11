@@ -66,7 +66,7 @@
 </body>
 <script type="text/artTemplate" id="proTemplate">
 <%for(var i=0;i<data.length;i++){%>
-  <a href="./productDetial.html?<%=data[i].id%>">
+  <a href="./productDetail.html?productId=<%=data[i].id%>">
     <img src="<%=data[i].pic[0].picAddr%>" alt="">
     <p class="name"><%=data[i].proName%></p>
     <p><span class="price"><%=data[i].price%></span><span class="oldPrice"><%=data[i].oldPrice%></span></p>

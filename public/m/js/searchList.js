@@ -9,14 +9,14 @@ $(function(){
   // 2.初始化input：获取url参数,并将数据复制给input
   var params = obj.getParamsByUrl();
   $('.lt_search input').val(params.key);
-  // 3.初始化页面，根据input的值渲染商品页
+  // 3.初始化搜索参数，根据input的值渲染商品页
   window.pageNum = 1;
-  getSearchData({
-    page:1,
-    pageSize:4
-  },function(data){
-    $('.lt_products').html(template('proTemplate',data));
-  })
+  window.searchParams = {
+    page:window.pageNum,
+    pageSize:4,
+  }
+  renderThePage(window.searchParams);
+  console.log(window.searchParams);
   /*
   排序：
    */
@@ -37,16 +37,21 @@ $(function(){
       }
     }
     //----排序业务逻辑-------
-    var searchP = {
-      page:1,
-      pageSize:4
+    //1.初始化搜索数据
+    window.searchParams = {
+      page:window.pageNum,
+      pageSize:4,
     }
+    //2.添加搜索数据
     if($this.find('span').hasClass('fa-angle-down')){
-      searchP[$(this).attr('data-type')] = 2;
+      window.searchParams[$(this).attr('data-type')] = 2;
     }else{
-      searchP[$(this).attr('data-type')] = 1;
+      window.searchParams[$(this).attr('data-type')] = 1;
     }
-    getOrderSearchData(searchP);
+    console.log(window.searchParams);
+    renderThePage(window.searchParams);
+    //3.启用上拉加载
+    mui('#refreshContainer').pullRefresh().enablePullupToRefresh();
   })
   /*
   下拉刷新和上拉加载
@@ -61,15 +66,18 @@ $(function(){
            setTimeout(function(){
              //清除排序样式
              $('.lt_productList').find('div').removeClass('now').find('span').removeClass('fa-angle-up').addClass('fa-angle-down');
-             getSearchData({
-               page:1,
-               pageSize:4
-             },function(data){
-               $('.lt_products').html(template('proTemplate',data));
-             });
+             //初始化查询数据
+             window.pageNum = 1;
+             window.searchParams = {
+               page:window.pageNum,
+               pageSize:4,
+             }
+             renderThePage(window.searchParams);
              // 结束刷新
              that.endPulldownToRefresh();
              that.refresh(true);
+             // 启用上拉加载
+             mui('#refreshContainer').pullRefresh().enablePullupToRefresh();
            },1000)
          }
        },
@@ -79,23 +87,15 @@ $(function(){
            var that = this;
            setTimeout(function(){
              // 在原页面（包括排序后的页面）重新获取数据，并附加在页面之后
-             if($('.lt_productList').find('div').hasClass('now')){
-
-             }else{
-               window.pageNum++;
-               getSearchData({
-                 page:window.pageNum,
-                 pageSize:4
-               },function(data){
-                 if(!data.data.length){
-                   that.endPullupToRefresh(true);
-                 }else{
-                   $('.lt_products').append(template('proTemplate',data));
-                   that.endPullupToRefresh(false);
-                 }
-               })
-
-             }
+             window.searchParams.page++;
+             getSearchData(window.searchParams,function(data){
+               if(!data.data.length){
+                 that.endPullupToRefresh(true);
+               }else{
+                 $('.lt_products').append(template('proTemplate',data));
+                 that.endPullupToRefresh(false);
+               }
+             })
            },1000);
          }
        }
@@ -117,7 +117,7 @@ var getSearchData = function(params,callback){
   })
 }
 // 获取排序搜索数据
-var getOrderSearchData = function(params){
+var renderThePage = function(params){
   getSearchData(params,function(data){
     $('.lt_products').html(template('proTemplate',data));
   })
