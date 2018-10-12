@@ -1,5 +1,5 @@
 // 获取url参数
-var obj = new Object();
+window.obj = new Object();
 obj.getParamsByUrl = function(){
   var params={};
   //?key=3&name=hello
@@ -14,4 +14,27 @@ obj.getParamsByUrl = function(){
     })
   }
   return params;
+}
+
+//传入对象中，除了ajax还需要包括回调函数
+obj.loginQuery = function(params){
+  $.ajax({
+    url:params.url || '#',
+    type:params.type || 'get',
+    data:params.data || '',
+    dataType:params.dataType || 'json',
+    success:function(data){
+      // 如果用户未登陆，跳转到登陆页面
+      if(data.error == 400){
+          location.href = '/m/user/login.html?returnUrl='+location.href;
+          return false;
+      }
+      else if(data.success){
+        success && success(data);
+      }
+    },
+    error:function(xhr){
+      mui.toast('服务器繁忙',{ duration:'long', type:'div' });
+    }
+  })
 }

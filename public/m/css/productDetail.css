@@ -112,6 +112,9 @@ body {
   border: 1px solid #ccc;
   vertical-align: middle;
 }
+.lt_content .lt_size span.now {
+  background: #fa672d;
+}
 .lt_content .lt_number {
   padding: 10px 5px;
   border-bottom: 1px solid #ccc;
@@ -136,6 +139,7 @@ body {
   cursor: pointer;
   border: 1px solid #ccc;
   vertical-align: middle;
+  margin-right: 10px;
 }
 .lt_content .lt_number input {
   width: 28px;
@@ -144,39 +148,58 @@ body {
   display: inline-block;
   text-align: center;
   cursor: pointer;
-  border: 1px solid #ccc;
+  border: none;
+  border-radius: 0;
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
   vertical-align: middle;
   margin: 0;
   padding: 0;
 }
 .lt_footer {
+  height: 50px;
   width: 100%;
-  height: 55px;
-  background: #006699;
-  position: absolute;
-  left: 0;
+  position: fixed;
   bottom: 0;
-  z-index: 22;
+  left: 0;
+  z-index: 888;
+  padding-left: 62px;
+  border-top: 1px solid #ccc;
+  background-color: #e6e6e6;
 }
-.lt_footer a {
-  display: block;
-  width: 25%;
-  height: 55px;
+.lt_footer a:first-child {
+  position: absolute;
+  left: 15px;
+  top: 13px;
+  font-size: 20px;
+  color: #333;
+}
+.lt_footer a:nth-child(2) {
+  width: 48%;
+  height: 39px;
+  line-height: 39px;
+  margin-top: 5px;
   float: left;
+  border: 0;
+  background-color: #991020;
   text-align: center;
-  padding-top: 10px;
+  font-size: 16px;
   color: #fff;
+  outline: none;
+  border-radius: 2px;
 }
-.lt_footer a.now {
-  color: orange;
-}
-.lt_footer a.now p {
-  color: orange;
-}
-.lt_footer a p {
-  font-size: 12px;
-  line-height: 14px;
-  padding-top: 2px;
-  margin-bottom: 0;
+.lt_footer a:last-child {
+  width: 48%;
+  height: 39px;
+  line-height: 39px;
+  margin-top: 5px;
+  float: right;
+  border: 0;
+  background-color: #fa672d;
+  text-align: center;
+  font-size: 16px;
   color: #fff;
+  outline: none;
+  border-radius: 2px;
+  margin-right: 6px;
 }

@@ -26,62 +26,61 @@
       <a href="./index.html"><span class="fa fa-home"></span></a>
     </header>
     <div class="lt_content mui-scroll-wrapper">
-      <div class="mui-scroll">
+      <div class="mui-scroll renderBox">
       <!-- content在这 -->
         <!-- 滑动 -->
-        <div class="lt_banner mui-slider">
-          <div class="mui-slider-group mui-slider-loop">
-            <!--支持循环，需要重复图片节点-->
-            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner4.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner1.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner2.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner3.png" /></a></div>
-            <div class="mui-slider-item"><a href="#"><img src="images/banner4.png" /></a></div>
-            <!--支持循环，需要重复图片节点-->
-            <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="images/banner1.png" /></a></div>
-          </div>
-          <div class="mui-slider-indicator">
-            <div class="mui-indicator mui-active"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-            <div class="mui-indicator"></div>
-          </div>
-        </div>
-        <div class="lt_title">
-          匡威三星标1970s converse复刻 142334c 144757c三星标黑色高帮
-        </div>
-        <div class="lt_price">价格：<span>￥499.1</span><span>￥888.1</span></div>
-        <div class="lt_size">尺寸：
-          <span>40</span>
-          <span>41</span>
-          <span>42</span>
-          <span>43</span>
-          <span>44</span>
-          <span>45</span>
-        </div>
-        <div class="lt_number">
-          数量：
-          <span>-</span>
-          <input readonly type="text" value="0">
-          <span>+</span>
-          剩余：
-          <span>20</span>件
-        </div>
+        <!-- TODO -->
       </div>
     </div>
     <footer class="lt_footer">
-      <a href=""><span class="fa fa-shopping-cart"></span></a>
-      <a href=""><button>加入购物车</button></a>
-      <a href=""><button>立即购买</button></a>
+      <a href="javascript:;"><span class="fa fa-shopping-cart"></span></a>
+      <a href="javascript:;">加入购物车</a>
+      <a href="">立即购买</a>
     </footer>
-
   </div>
 </body>
 <script type="text/artTemplate" id="productDetailTemplate">
-
+<%
+  var sizeArr = size.split('-');
+  var length = pic.length;
+%>
+<div class="lt_banner mui-slider">
+  <div class="mui-slider-group mui-slider-loop">
+    <!--支持循环，需要重复图片节点-->
+    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="<%=pic[length-1].picAddr%>" /></a></div>
+    <%for(var i=0;i<pic.length;i++){%>
+      <div class="mui-slider-item"><a href="#"><img src="<%=pic[i].picAddr%>" /></a></div>
+    <%}%>
+    <!--支持循环，需要重复图片节点-->
+    <div class="mui-slider-item mui-slider-item-duplicate"><a href="#"><img src="<%=pic[0].picAddr%>" /></a></div>
+  </div>
+  <div class="mui-slider-indicator">
+  <%for(var i=0;i<pic.length;i++){%>
+    <div class="mui-indicator <%=i==0 ? 'mui-active' : ''%>"></div>
+  <%}%>
+  </div>
+</div>
+<div class="lt_title">
+  <%=proName%>
+</div>
+<div class="lt_price">价格：<span><%=price%></span><span><%=oldPrice%></span></div>
+<div class="lt_size">尺寸：
+  <%for(i=sizeArr[0];i<=sizeArr[1];i++){%>
+    <span><%=i%></span>
+  <%}%>
+</div>
+<div class="lt_number">
+  数量：
+  <span>-</span><!--
+  --><input readonly type="text" value="0"><!--
+  --><span>+</span>
+  剩余：
+  <span><%=num%></span>件
+</div>
 </script>
 <script src="assets/artTemplate/template-native.js"></script>
 <script src="assets/mui/js/mui.min.js"></script>
 <script src="assets/zepto/zepto.min.js"></script>
 <script src="js/productDetail.js"></script>
+<script src="js/common.js"></script>
 </html>
