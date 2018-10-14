@@ -34,12 +34,13 @@ var getDetailData = function(data,callback){
   })
 }
 var selectDetailData = function(){
+  // 需要传递给后台的数据
   window.selectDD={
     productId:window.urlParams.productId,
     num:0,
     size:0
   };
-
+// 用户的操作对数据、样式的修改
   $('.lt_size span').on('tap',function(){
     $(this).addClass('now').siblings().removeClass('now');
     window.selectDD['size'] = $(this).html();
