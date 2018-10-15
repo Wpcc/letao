@@ -84,8 +84,9 @@ var postDetailData = function(){
       type:'post',
       data:window.selectDD,
       dataType:'json',
-      success:function(data){
-        console.log(data);
+      success:function(){
+        // 用户登录，并将数据添加到数据库
+        location.href="./user/cart.html";
       }
     })
   })

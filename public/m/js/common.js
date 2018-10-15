@@ -30,7 +30,7 @@ obj.loginQuery = function(params){
           return false;
       }
       else if(data.success){
-        success && success(data);
+        params.success && params.success();
       }
     },
     error:function(xhr){

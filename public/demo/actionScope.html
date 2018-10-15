@@ -7,6 +7,18 @@
   <title>Document</title>
 </head>
 <body>
-  <p>cate page</p>
+
 </body>
+<script>
+function createPerson(name){
+  var a = 1;
+  return function(){
+    console.log(a);
+    console.log(b);
+  }
+  var b = 2;
+}
+var hello = createPerson();
+hello();
+</script>
 </html>
