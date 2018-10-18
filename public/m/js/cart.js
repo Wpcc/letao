@@ -86,6 +86,7 @@ $(function(){
               var index = $(this).attr('data-id');
               window.cartData.splice(index,1);
               $('#cart_box').html(template('cartTemplate',{arr:window.cartData}));
+              setAmount();
             }else{
               mui.toast(data.message);
             }
@@ -100,7 +101,25 @@ $(function(){
   $('.fa-refresh').on('tap',function(){
     mui('#refreshContainer').pullRefresh().pulldownLoading();
   })
+  // 4.计算产品金额
+  $('body').on('change','input[type="checkbox"]',function(){
+    setAmount();
+  })
 })
+// 计算总金额
+var setAmount = function(){
+  var checkedBox = $('input[type="checkbox"]:checked');
+  var amount = 0.00;
+  $.each(checkedBox,function(index,item){
+    var id = $(item).attr('data-id');
+    var price = window.cartData[id].price;
+    var num = window.cartData[id].num;
+    amount += price*num;
+    // 取出计算机中产生的浮点数
+    amount = Math.floor(amount*100)/100;
+  })
+  $('#cartAmount').html(amount);
+}
 // 获取后台用户购物车的数据
 var getCartData = function(callback){
   $.ajax({
