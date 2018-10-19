@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/bootstrap-validator/css/bootstrapValidator.min.css"/>
+    <link rel="stylesheet" href="assets/nprogress/nprogress.css"/>
+    <link rel="stylesheet" href="css/login.css">
+  </head>
+  <body>
+    <div class="container-fluid">
+      <!-- panels面板 -->
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">后台管理系统</h3>
+        </div>
+        <div class="panel-body">
+          <!-- 表单内容 -->
+          <form class="form-horizontal" id="login">
+            <div class="form-group">
+              <label for="inputEmail3" class="col-sm-3 control-label">用户名</label>
+              <div class="col-sm-9">
+                <input type="name" name="username"  class="form-control" id="inputEmail3" placeholder="请输入用户名">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="inputPassword3" class="col-sm-3 control-label">密码</label>
+              <div class="col-sm-9">
+                <input type="password" name="password" class="form-control" id="inputPassword3" placeholder="请输入密码">
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-sm-offset-3 col-sm-9">
+                <button type="reset" class="btn btn-default mr_50">重置</button>
+                <button type="submit" class="btn btn-primary submit">登录</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- 表单验证插件 -->
+    <script src="assets/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+    <!-- ajax加载进度条插件 -->
+    <script src="assets/nprogress/nprogress.js"></script>
+    <!-- 页面公共样式 -->
+    <script src="js/admin.js"></script>
+    <script src="js/login.js"></script>
+  </body>
+</html>

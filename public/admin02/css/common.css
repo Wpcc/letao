@@ -1,0 +1,90 @@
+/* reset */
+a{
+  color: #aaa;
+}
+html,body{
+  width: 100%;
+  height: 100%;
+}
+aside{
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 180px;
+  height: 100%;
+  background: #222d32;
+  z-index: 8;
+}
+.aside_title{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  background: #367fa9;
+  color: #fff;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+}
+.aside_title a{
+  color: #fff;
+}
+.aside_content{
+  width: 100%;
+}
+.aside_content .user{
+  color: #fff;
+  font-size: 12px;
+  padding: 30px 20px;
+  vertical-align: center;
+}
+.aside_content .user img{
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.aside_content ul li{
+  padding: 10px 0;
+}
+.aside_content ul li a{
+  display: block;
+}
+.aside_content ul li a span{
+  padding-right: 5px;
+}
+.aside_content ul li div a{
+  text-indent: 2em;
+  padding-top: 10px;
+  font-size: 12px;
+}
+
+.navbar{
+  padding-left: 180px;
+  border-radius: 0;
+  background: #3c8dbc;
+  line-height: 50px;
+}
+.navbar-default{
+  border: none;
+}
+.navbar a span{
+  color: #fff;
+  font-size: 16px;
+}
+.navbar a:first-child{
+  float: left;
+  width: 60px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.navbar a:last-child{
+  float: right;
+  width: 60px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+}
+.sonBox{
+  display: none;
+}
