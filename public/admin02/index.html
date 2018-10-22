@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>后台管理系统</title>
+    <!-- Bootstrap -->
+    <link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/nprogress/nprogress.css"/>
+    <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" href="css/index.css">
+  </head>
+  <body>
+    <aside>
+      <div class="aside_title">
+        <a href="">ITCAST</a>
+      </div>
+      <div class="aside_content">
+        <div class="user">
+          <img src="images/default.png" alt="">
+          <span>超级管理员</span>
+        </div>
+        <ul>
+          <li>
+            <a href=""><span class="glyphicon glyphicon-user"></span><span>用户管理</span></a>
+          </li>
+          <li>
+            <a href="" class="fatherBox"><span class="glyphicon glyphicon-tasks"></span><span>分类管理</span></a>
+            <div class="sonBox">
+              <a href="">一级分类</a>
+              <a href="">二级分类</a>
+            </div>
+          </li>
+          <li>
+            <a href=""><span class="glyphicon glyphicon-tags"></span><span>商品管理</span></a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+    <nav class="navbar navbar-default">
+      <a href=""><span class="glyphicon glyphicon-align-justify catalog"></span></a>
+      <a href="javascript:;"><span class="glyphicon glyphicon-share" data-toggle="modal" data-target="#myModal"></span></a>
+    </nav>
+    <div class="content clearFix">
+      <ol class="breadcrumb">
+        <li><a href="#">管理系统</a></li>
+        <li><a class="active">首页</a></li>
+      </ol>
+      <div id="tableBar"></div>
+      <div id="tableCir"></div>
+    </div>
+    <!-- 模态框 -->
+    <!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">温馨提示</h4>
+          </div>
+          <div class="modal-body">
+            您确定要退出后台管理系统吗？
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            <button type="button" class="btn btn-primary loginOut">确定</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="assets/jquery/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <!-- ajax加载进度条插件 -->
+    <script src="assets/nprogress/nprogress.js"></script>
+    <!-- echarts -->
+    <script src="assets/echarts/echarts.min.js"></script>
+    <!-- 页面公共样式 -->
+    <script src="js/admin.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>

@@ -17,4 +17,31 @@ $(function(){
     e.preventDefault();
     $('.sonBox').slideToggle('slow');
   })
+  $('.catalog').click(function(e){
+    e.preventDefault();
+    $('aside').toggle();
+    $('nav').toggleClass('menu');
+  })
+  // 退出：弹出模态框
+  $('.loginOut').click(function(){
+    console.log('hello');
+    loginOut();
+  });
 })
+
+var loginOut = function(){
+  $.ajax({
+    url:'/employee/employeeLogout',
+    type:'get',
+    data:'',
+    dataType:'json',
+    success:function(data){
+      if(data.success){
+        setTimeout(function(){
+          location.href='http://127.0.0.1:3000/admin02/login.html';
+        },1000)
+        console.log(data);
+      }
+    }
+  })
+}

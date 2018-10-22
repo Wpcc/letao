@@ -1,0 +1,21 @@
+.content{
+  margin-left: 180px;
+}
+#tableBar{
+  width: 45%;
+  height: 400px;
+  margin-right: 5%;
+  float: left;
+}
+#tableCir{
+  width: 45%;
+  height: 400px;
+  float: left;
+}
+.clearFix:after{
+  content: '';
+  height: 0;
+  display: block;
+  visibility: hidden;
+  clear: both;
+}

@@ -1,6 +1,9 @@
 /* reset */
-a{
+aside a{
   color: #aaa;
+}
+.active{
+  color: #999;
 }
 html,body{
   width: 100%;
@@ -64,6 +67,9 @@ aside{
   background: #3c8dbc;
   line-height: 50px;
 }
+.menu{
+  padding-left: 0;
+}
 .navbar-default{
   border: none;
 }
@@ -87,4 +93,7 @@ aside{
 }
 .sonBox{
   display: none;
+}
+.modal-dialog{
+  width:
 }
